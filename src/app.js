@@ -1,4 +1,5 @@
 import HeaderBar from './headerBar'
+import './styles/base.css';
 
 const container = document.getElementById('container');
 

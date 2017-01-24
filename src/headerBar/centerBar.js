@@ -8,8 +8,12 @@ export default class CenterBar {
 
     init(){
         const mainDiv = this.createMainDiv();
-        const weekDaysDiv = this.createWeekDaysDiv();
+		const markerDiv = this.createMarkerDiv();
+        const weekDaysDiv = this.createWeekDaysDiv(markerDiv);
+		const longBarDiv = this.createLongBarDiv();
+		longBarDiv.appendChild(markerDiv);
         mainDiv.appendChild(weekDaysDiv);
+        mainDiv.appendChild(longBarDiv);
         this.content = mainDiv;
     }
 
@@ -19,15 +23,23 @@ export default class CenterBar {
         return div;
     }
 
-    createWeekDaysDiv = () => {
+	createLongBarDiv(){
+        const div = document.createElement('div');
+        div.classList.add('header__long-bar');
+        return div;
+    }
+
+	createMarkerDiv(){
+        const div = document.createElement('div');
+        div.classList.add('header__marker');
+        return div;
+    }
+
+    createWeekDaysDiv = (markerDiv) => {
         const div = document.createElement('div');
         div.classList.add('header__center-bar__div-days');
-        //const todayIndex = now.getDay();
-        //const date = now.getDate();
-        //const startDayDate = new Date(now.getDate() - 3);
         const dateOffset = (24*60*60*1000)*3;
         const now = new Date();
-        //const startDayTime = (new Date()).setTime(now.getTime() - dateOffset);
         const startDayDate = new Date(now.getTime() - dateOffset);
 
         //create objects for upper timeline
@@ -37,7 +49,7 @@ export default class CenterBar {
 
         for (let i in daysObjects){
             if (Object.prototype.hasOwnProperty.call(daysObjects, i)) {
-                daysDivs.push(_this.createDivDayElement(daysObjects[i]));
+                daysDivs.push(_this.createDivDayElement(daysObjects[i], markerDiv));
             }
         }
 
@@ -66,27 +78,36 @@ export default class CenterBar {
         }
 
         return divDays;
-    }
+    };
 
-    createDivDayElement = (dayObj) => {
+    createDivDayElement = (dayObj, markerDiv) => {
 
         var dayDiv = document.createElement('div');
 
         if (dayObj.name){
             dayDiv.innerText = dayObj.name;
 
-            if ([TODAY, TOMORROW].includes(dayObj.name)){
-                dayDiv.classList.add('header--center-bar--big-day');
-            } else {
-                dayDiv.classList.add('header--center-bar--day');
-            }
+            [TODAY, TOMORROW].includes(dayObj.name)
+				?dayDiv.classList.add('header--center-bar--big-day')
+				:dayDiv.classList.add('header--center-bar--day');
         }
 
         if (dayObj.date){
             dayDiv.setAttribute('data-date', dayObj.date.getTime());
         }
 
-        return dayDiv;
+		dayDiv.addEventListener('click',function(e){
+			this.dayClickHandler(e, markerDiv);
+		}.bind(this));
 
-    }
+        return dayDiv;
+    };
+
+	dayClickHandler = (e, markerDiv) => {
+		const target = e.target;
+		if (!target) return;
+		markerDiv.style.left = target.offsetLeft + 'px';
+		markerDiv.style.width = target.clientWidth + 'px';
+	};
+
 }

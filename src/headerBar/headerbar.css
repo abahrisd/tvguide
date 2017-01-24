@@ -1,28 +1,50 @@
+.header{
+    height: 100px;
+}
 .header__logo-div{
     width: 20%;
     float: left;
 }
 .header__logo-image{
     float: left;
+    margin: 10px 15px;
 }
 .header__time-container{
     float: left;
+    font-size: 1.4rem;
+    margin-top: 10px;
 }
 .header__time-span{
-    width: 100%;
-    float: left;
+    /*width: 100%;*/
+    /*float: left;*/
 }
 .header__time-span--date{
+    /*font-size: 1.4rem;*/
 }
 .header__time-span--time{
+    /*font-size: 1.4rem;*/
+}
+.header__long-bar {
+    /*background-color: grey;*/
+    height: 10px;
+    margin-top: 15px;
+    background-color: #403c3c;
 }
 .header__center-bar {
     width: 60%;
+    height: 100px;
     float: left;
-    background-color: grey;
 }
 .header__center-bar__div-days {
+    /*float:left;*/
+    /*box-sizing:border-box;*/
+    /*display: inline-block;*/
     height:50px;
+    font-size: larger;
+    cursor: pointer;
+    /*line-height: 50px;*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
     /*width: 100%;*/
 }
 .header--center-bar--big-day {
@@ -34,7 +56,7 @@
     line-height: 50px;
     text-align: center;
     vertical-align: middle;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 .header--center-bar--day {
     float:left;
@@ -44,5 +66,28 @@
     line-height: 50px;
     text-align: center;
     vertical-align: middle;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+}
+.header--center-bar--big-day:hover, .header--center-bar--day:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+.header__marker{
+    background-color: red;
+    height: 10px;
+    position: absolute;
+}
+.header__tv-guide{
+    width: 20%;
+    height: 100px;
+    float: left;
+}
+.header__tv-guide__logo{
+    box-sizing:border-box;
+    display: table;
+    margin: auto;
+    font-size: 3rem;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
 }

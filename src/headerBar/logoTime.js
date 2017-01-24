@@ -22,8 +22,8 @@ export default class LogoTime {
 	}
 
 	createLogo(){
-		const imgSrc = require("file-loader!./black.png");
-		//const imgSrc = require("file-loader!./domru_logo.png");
+		//const imgSrc = require("file-loader!./black.png");
+		const imgSrc = require("file-loader!./domru_logo.png");
 		const logo = document.createElement('img');
 		logo.setAttribute('src', imgSrc);
         logo.classList.add('header__logo-image');
@@ -33,14 +33,14 @@ export default class LogoTime {
 	createDateTimeBlock(){
 		const div = document.createElement('div');
         div.classList.add('header__time-container');
-        const baseSpan = document.createElement('span');
-        baseSpan.classList.add('header__time-span');
-		const topSpan = baseSpan.cloneNode(false);
-        topSpan.classList.add('header__time-span--date');
-		const bottomSpan = baseSpan.cloneNode(false);
-        bottomSpan.classList.add('header__time-span--time');
-		div.appendChild(topSpan);
-		div.appendChild(bottomSpan);
+        const baseDiv = document.createElement('div');
+        baseDiv.classList.add('header__time-span');
+		const topDiv = baseDiv.cloneNode(false);
+        topDiv.classList.add('header__time-span--date');
+		const bottomDiv = baseDiv.cloneNode(false);
+        bottomDiv.classList.add('header__time-span--time');
+		div.appendChild(topDiv);
+		div.appendChild(bottomDiv);
 
 		setInterval(()=>{
 			const now = new Date();
@@ -51,8 +51,8 @@ export default class LogoTime {
 			const minutes = now.getMinutes()<10?`0${now.getMinutes()}`:now.getMinutes();
 			const seconds = now.getSeconds();
 
-			topSpan.innerText = `${date} ${monthName}, ${dayName}`;
-			bottomSpan.innerText = `${hours}:${minutes}:${seconds}`;
+			topDiv.innerText = `${date} ${monthName}, ${dayName}`;
+			bottomDiv.innerText = `${hours}:${minutes}:${seconds}`;
 		}, 1000);
 
 		return div;

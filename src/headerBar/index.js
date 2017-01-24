@@ -1,20 +1,30 @@
-import logoTime from './logoTime'
+import LogoTime from './logoTime';
+import CenterBar from './centerBar';
+import './headerbar.css';
 
-class headerBar {
+export default class HeaderBar {
 
-	constructor(container) {
+	constructor() {
 		//this.isInited = false;
-		this.container = container;
-		this.init()
+        //require("css!./headerbar.css");
+        this.content = document.createElement('div');
+        //require("style-loader!css-loader!./headerbar.css");
+		this.init();
 	}
 
 	init(){
-		const logoBlock = new logoTime(this.container);
-		if (logoBlock.div){
-			this.container.appendChild(logoBlock.div);
+
+        //create left logo + datetime
+		const logoBlock = new LogoTime();
+		if (logoBlock.content){
+			this.content.appendChild(logoBlock.content);
+		}
+
+        //create center timeline
+		const centerBar = new CenterBar();
+		if (centerBar.content){
+			this.content.appendChild(centerBar.content);
 		}
 	}
 
 }
-
-export default headerBar

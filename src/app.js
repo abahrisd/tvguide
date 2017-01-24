@@ -1,7 +1,12 @@
-import headerBar from './headerBar'
+import HeaderBar from './headerBar'
 
 const container = document.getElementById('container');
 
-new headerBar(container);
+const header = new HeaderBar();
+
+if (header.content){
+    container.appendChild(header.content);
+}
+
 
 //container.innerText = 'Hello world!';

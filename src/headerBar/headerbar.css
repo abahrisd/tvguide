@@ -1,0 +1,48 @@
+.header__logo-div{
+    width: 20%;
+    float: left;
+}
+.header__logo-image{
+    float: left;
+}
+.header__time-container{
+    float: left;
+}
+.header__time-span{
+    width: 100%;
+    float: left;
+}
+.header__time-span--date{
+}
+.header__time-span--time{
+}
+.header__center-bar {
+    width: 60%;
+    float: left;
+    background-color: grey;
+}
+.header__center-bar__div-days {
+    height:50px;
+    /*width: 100%;*/
+}
+.header--center-bar--big-day {
+    float:left;
+    overflow: hidden;
+    box-sizing:border-box;
+    display: inline-block;
+    width: 14%;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+.header--center-bar--day {
+    float:left;
+    box-sizing:border-box;
+    display: inline-block;
+    width: 8%;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black;
+}

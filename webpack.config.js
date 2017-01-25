@@ -13,6 +13,19 @@ module.exports = {
     },
     module: {
         loaders: [
+			//{ test: /\.json$/, loader: 'json' },
+			/*{
+				test: /\.json$/,
+				loader: 'json-loader'
+			},*/
+            {
+				test: /\.json$/,
+				loader: 'raw-loader'
+            },
+            /*{
+				test: /\.json$/,
+				loader: 'file-loader'
+            },*/
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
